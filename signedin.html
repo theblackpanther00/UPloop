@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <title>Document</title>
+</head>
+
+<body>
+    <video src="assets/pexels-zch-12722063 (2160p).mp4" id="video" autoplay muted loop></video>
+    <div class="navbar">
+        <div class="logo">
+            <a href="index.html"><img src="/assets/Uploop Logo.svg" alt="Logo"> </a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="upload.html">Upload</a></li>
+            <li><a href="#" id="logout">Log Out</a></li>
+        </ul>
+    </div>
+
+    <div class="grid-container" id="grid-container">
+            
+        <div class="grid-item">
+            <h3 class="username">@Jay Kleezie:</h3>
+            <audio id="audioPlayer" controls> 
+                <source id="audioSource" src="mp3/so long.mp3" type="audio/mpeg">
+              </audio>
+              <a href="mp3/so long.mp3" download>   
+            <button id="download">Download</button> 
+            </a> 
+        </div> 
+
+        <div class="grid-item">
+            <h3 class="username">@Producer 2:</h3>
+            <audio id="audioPlayer" controls> 
+                <source id="audioSource" src="mp3/7-21 jay kleezie 105 BPM.mp3" type="audio/mpeg">
+              </audio>
+              <a href="mp3/7-21 jay kleezie 105 BPM.mp3" download>   
+            <button id="download">Download</button> 
+            </a> 
+        </div>
+
+        <div class="grid-item">
+            <h3 class="username">@Producer 3:</h3>
+            <audio id="audioPlayer" controls> 
+                <source id="audioSource" src="mp3/so long.mp3" type="audio/mpeg">
+              </audio>
+              <a href="mp3/so long.mp3" download>   
+            <button id="download">Download</button> 
+            </a> 
+        </div>
+
+        <div class="grid-item">
+            <h3 class="username">@Producer 4:</h3>
+            <audio id="audioPlayer" controls> 
+                <source id="audioSource" src="mp3/so long.mp3" type="audio/mpeg">
+              </audio>
+              <a href="mp3/so long.mp3" download>   
+            <button id="download">Download</button> 
+            </a> 
+        </div>
+
+        <div class="grid-item">
+            <h3 class="username">@Producer 5:</h3>
+            <audio id="audioPlayer" controls> 
+                <source id="audioSource" src="mp3/so long.mp3" type="audio/mpeg">
+              </audio>
+              <a href="mp3/so long.mp3" download>   
+            <button id="download">Download</button> 
+            </a> 
+        </div>
+
+        <div class="grid-item">
+            <h3 class="username">@Producer 6:</h3>
+            <audio id="audioPlayer" controls> 
+                <source id="audioSource" src="mp3/so long.mp3" type="audio/mpeg">
+              </audio>
+              <a href="mp3/so long.mp3" download>   
+            <button id="download">Download</button> 
+            </a> 
+        </div>
+
+                        
+    </div> 
+</body>
+</html>
+
+<script type="module">
+
+    // Import the functions you need from the SDKs you need
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
+import { getDatabase, set, ref, update} from "https://www.gstatic.com/firebasejs/10.1.0/firebase-database.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js";
+import { getStorage, ref } from "firebase/storage";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyB9Q5zmQJvvsuuUNI8UKSCF5CaPUxFCtSY",
+  authDomain: "uploop-de34a.firebaseapp.com",
+  projectId: "uploop-de34a",
+  storageBucket: "uploop-de34a.appspot.com",
+  messagingSenderId: "204359880271",
+  appId: "1:204359880271:web:1a0781702052ef4829243a",
+  measurementId: "G-3BZQ1ZWPZN"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
+const auth = getAuth();
+
+
+ const user = auth.currentUser
+
+ onAuthStateChanged(auth, (user) => {
+  if (user) {
+    // User is signed in, see docs for a list of available properties
+    // https://firebase.google.com/docs/reference/js/auth.user
+    const uid = user.uid;
+    // ...
+  } else {
+    // User is signed out
+    // ...
+  }
+});
+const logout = document.getElementById('logout');
+
+logout.addEventListener('click', (e) => {
+        signOut(auth)
+        
+        .then(() => {
+    // Sign-out successful.
+ 
+    alert('Signed-Out')
+    window.location.href = 'index.html'
+    })
+    .catch((error) => {
+    // An error happened
+
+    alert('logged out failed ');
+    });
+
+});
+
+
+const explore = document.getElementById('explore');
+explore.addEventListener( 'click', (e) => {
+
+    
+});
+
+
+</script>
+
+<script src="app.js"></script>
